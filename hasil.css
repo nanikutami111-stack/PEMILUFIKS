@@ -1,0 +1,426 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #111;
+  color: #f4f1e8;
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+
+/* =========================================
+   GRAIN
+   ========================================= */
+
+.grain {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.06;
+
+  z-index: 10;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.results-page {
+  width: min(1100px, 92%);
+  margin: auto;
+
+  padding: 35px 0 70px;
+}
+
+
+/* =========================================
+   TOP
+   ========================================= */
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #444;
+
+  padding-bottom: 14px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.header {
+  padding: 70px 0 45px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+
+  opacity: 0.55;
+}
+
+.header h1 {
+  margin: 0;
+
+  font-size: clamp(60px, 10vw, 130px);
+  line-height: 0.82;
+
+  font-weight: 800;
+
+  letter-spacing: -3px;
+}
+
+.header h1 span {
+  opacity: 0.45;
+}
+
+.subtitle {
+  margin-top: 30px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  line-height: 1.7;
+
+  opacity: 0.6;
+}
+
+
+/* =========================================
+   ADMIN
+   ========================================= */
+
+.admin-box {
+  border: 1px solid #444;
+
+  padding: 28px;
+
+  margin-bottom: 40px;
+}
+
+.admin-box h2 {
+  margin: 0 0 20px;
+
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.pass-row {
+  display: flex;
+  gap: 10px;
+}
+
+.pass-row input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 16px;
+
+  border: 1px solid #555;
+
+  background: #181818;
+
+  color: white;
+
+  font-family: "DM Mono", monospace;
+
+  outline: none;
+}
+
+.pass-row input:focus {
+  border-color: #aaa;
+}
+
+.pass-row button {
+  border: 0;
+
+  padding: 16px 22px;
+
+  background: #f4f1e8;
+  color: #111;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.pass-row button:hover {
+  opacity: 0.8;
+}
+
+.pass-row button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+#status {
+  margin: 14px 0 0;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  color: #aaa;
+}
+
+
+/* =========================================
+   HASIL
+   ========================================= */
+
+#results {
+  display: block;
+  width: 100%;
+}
+
+
+/* =========================================
+   TOTAL
+   ========================================= */
+
+.total-box {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  padding: 30px;
+
+  margin-bottom: 55px;
+
+  border: 1px solid #444;
+}
+
+.total-box strong {
+  display: block;
+
+  font-size: 70px;
+
+  line-height: 0.8;
+}
+
+.total-box > span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  opacity: 0.5;
+}
+
+
+/* =========================================
+   RESULT SECTION
+   ========================================= */
+
+.result-section {
+  margin-bottom: 65px;
+}
+
+.section-title {
+  border-bottom: 1px solid #444;
+
+  margin-bottom: 25px;
+
+  padding-bottom: 15px;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  font-size: 38px;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================
+   BAR
+   ========================================= */
+
+.bars {
+  display: block;
+  width: 100%;
+}
+
+.bar-item {
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: 25px;
+}
+
+.bar-info {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  margin-bottom: 8px;
+}
+
+.candidate-name {
+  font-size: 25px;
+
+  font-weight: 600;
+}
+
+.vote-count {
+  font-family: "DM Mono", monospace;
+
+  font-size: 14px;
+}
+
+.bar-track {
+  display: block;
+
+  width: 100%;
+
+  height: 18px;
+
+  background: #2b2b2b;
+
+  overflow: hidden;
+}
+
+.bar-fill {
+  display: block;
+
+  height: 100%;
+
+  background: #f4f1e8;
+
+  transition: width 1s ease;
+}
+
+
+/* =========================================
+   REFRESH
+   ========================================= */
+
+.refresh {
+  display: block;
+
+  margin: 0 auto 20px;
+
+  padding: 16px 22px;
+
+  border: 1px solid #777;
+
+  background: transparent;
+
+  color: #f4f1e8;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.refresh:hover {
+  background: #f4f1e8;
+  color: #111;
+}
+
+
+/* =========================================
+   BACK HOME
+   ========================================= */
+
+.back-home {
+  display: block;
+
+  width: fit-content;
+
+  margin: 0 auto;
+
+  padding: 14px 20px;
+
+  border: 1px solid #444;
+
+  color: #f4f1e8;
+
+  text-decoration: none;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 0.5px;
+}
+
+.back-home:hover {
+  background: #f4f1e8;
+  color: #111;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+  .results-page {
+    width: 90%;
+  }
+
+  .header {
+    padding: 50px 0 35px;
+  }
+
+  .header h1 {
+    font-size: 70px;
+  }
+
+  .pass-row {
+    flex-direction: column;
+  }
+
+  .total-box {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 25px;
+  }
+
+  .section-title h2 {
+    font-size: 30px;
+  }
+
+  .candidate-name {
+    font-size: 21px;
+  }
+
+  .vote-count {
+    font-size: 12px;
+  }
+
+}

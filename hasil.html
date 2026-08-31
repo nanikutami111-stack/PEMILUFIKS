@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HASIL PEMILIHAN — SMA N 1 JEPON</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="hasil.css">
+</head>
+
+<body>
+
+  <div class="grain"></div>
+
+  <main class="results-page">
+
+    <div class="topline">
+      <span>OSIS • 2026</span>
+      <span>HASIL PEMILIHAN</span>
+    </div>
+
+
+    <header class="header">
+
+      <p class="eyebrow">
+        REAL TIME RESULT
+      </p>
+
+      <h1>
+        HASIL<br>
+        <span>PEMILIHAN</span>
+      </h1>
+
+      <p class="subtitle">
+        HASIL SUARA YANG TERCATAT DI SISTEM E-VOTING.
+      </p>
+
+    </header>
+
+
+    <!-- ADMIN -->
+
+    <section class="admin-box">
+
+      <p class="eyebrow">
+        ADMIN ACCESS
+      </p>
+
+      <h2>
+        MASUKKAN PASSCODE
+      </h2>
+
+      <div class="pass-row">
+
+        <input
+          type="password"
+          id="passcode"
+          placeholder="PASSCODE ADMIN"
+          autocomplete="off"
+        >
+
+        <button
+          type="button"
+          id="loadButton"
+        >
+          LIHAT HASIL →
+        </button>
+
+      </div>
+
+      <p id="status"></p>
+
+    </section>
+
+
+    <!-- HASIL -->
+
+    <section id="results">
+
+      <!-- TOTAL -->
+
+      <div class="total-box">
+
+        <div>
+
+          <p class="eyebrow">
+            TOTAL SUARA
+          </p>
+
+          <strong id="totalVotes">
+            0
+          </strong>
+
+        </div>
+
+        <span>
+          VOTE RECORDED
+        </span>
+
+      </div>
+
+
+      <!-- OSIS -->
+
+      <section class="result-section">
+
+        <div class="section-title">
+
+          <p class="eyebrow">
+            01
+          </p>
+
+          <h2>
+            KETUA &amp; WAKIL OSIS
+          </h2>
+
+        </div>
+
+        <div
+          id="osisResult"
+          class="bars"
+        ></div>
+
+      </section>
+
+
+      <!-- PRADANA PUTRA -->
+
+      <section class="result-section">
+
+        <div class="section-title">
+
+          <p class="eyebrow">
+            02
+          </p>
+
+          <h2>
+            PRADANA PUTRA
+          </h2>
+
+        </div>
+
+        <div
+          id="putraResult"
+          class="bars"
+        ></div>
+
+      </section>
+
+
+      <!-- PRADANA PUTRI -->
+
+      <section class="result-section">
+
+        <div class="section-title">
+
+          <p class="eyebrow">
+            03
+          </p>
+
+          <h2>
+            PRADANA PUTRI
+          </h2>
+
+        </div>
+
+        <div
+          id="putriResult"
+          class="bars"
+        ></div>
+
+      </section>
+
+
+      <!-- REFRESH -->
+
+      <button
+        type="button"
+        class="refresh"
+        id="refreshButton"
+      >
+        ↻ PERBARUI HASIL
+      </button>
+
+
+      <!-- KEMBALI -->
+
+      <a
+        href="index.html"
+        class="back-home"
+      >
+        ← KEMBALI KE HALAMAN UTAMA
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <script src="hasil.js"></script>
+
+</body>
+</html>

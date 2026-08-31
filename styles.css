@@ -1,0 +1,1199 @@
+:root {
+  --bg: #26000e;
+  --bg-dark: #160007;
+  --maroon: #65001f;
+  --maroon-light: #8d1239;
+  --wine: #3d0015;
+
+  --paper: #f7e9ea;
+  --ink: #26000d;
+
+  --white-soft: rgba(247, 233, 234, .72);
+  --white-faint: rgba(247, 233, 234, .35);
+
+  --pink: #ff174f;
+  --pink-soft: rgba(255, 23, 79, .28);
+}
+
+
+/* =====================================================
+   RESET
+   ===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--bg-dark);
+  color: var(--paper);
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+
+/* =====================================================
+   BACKGROUND
+   ===================================================== */
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(166, 15, 64, .35),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 5% 95%,
+      rgba(88, 0, 28, .7),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #1a0008 0%,
+      #520019 46%,
+      #27000d 100%
+    );
+
+  z-index: -3;
+}
+
+.app-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 49.7%,
+      rgba(255, 255, 255, .025) 49.8%,
+      transparent 50%
+    );
+
+  z-index: -2;
+}
+
+
+/* =====================================================
+   GRAIN
+   ===================================================== */
+
+.grain {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .075;
+
+  z-index: 100;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+
+/* =====================================================
+   SCREEN
+   ===================================================== */
+
+.screen {
+  position: absolute;
+  inset: 0;
+
+  padding:
+    20px
+    clamp(24px, 7vw, 105px)
+    18px;
+
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+
+  transform: translateX(7%);
+
+  pointer-events: none;
+
+  transition:
+    opacity .35s ease,
+    transform .5s cubic-bezier(.2, .8, .2, 1);
+}
+
+.screen.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.screen.exit-left {
+  opacity: 0;
+  transform: translateX(-7%);
+}
+
+
+/* =====================================================
+   TOP
+   ===================================================== */
+
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 22px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .13em;
+
+  opacity: .85;
+  text-transform: uppercase;
+}
+
+.topline::after {
+  content: "";
+
+  position: absolute;
+
+  left: clamp(24px, 7vw, 105px);
+  right: clamp(24px, 7vw, 105px);
+  top: 42px;
+
+  height: 1px;
+
+  background: var(--white-faint);
+}
+
+
+/* =====================================================
+   EYEBROW
+   ===================================================== */
+
+.eyebrow {
+  margin: 0 0 6px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  line-height: 1;
+
+  letter-spacing: .17em;
+
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   OPENING
+   ===================================================== */
+
+.hero-copy {
+  margin-top: auto;
+  margin-bottom: 22px;
+
+  max-width: 650px;
+}
+
+.hero-copy h1 {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+
+  font-size: clamp(64px, 9vw, 122px);
+  line-height: .72;
+
+  font-weight: 800;
+
+  letter-spacing: -.03em;
+
+  text-transform: uppercase;
+}
+
+.hero-copy h1 span {
+  margin-left: 0;
+}
+
+.school {
+  margin: 19px 0 5px;
+
+  font-size: 25px;
+  font-weight: 600;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+}
+
+.subcopy {
+  margin: 0;
+
+  color: var(--white-soft);
+
+  font-size: 16px;
+  line-height: 1.25;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+.btn {
+  border: 0;
+  border-radius: 0;
+
+  background: var(--paper);
+  color: var(--ink);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+
+  letter-spacing: .12em;
+
+  padding: 15px 35px;
+
+  min-height: 28px;
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    opacity .2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  align-self: flex-start;
+
+  min-width: 74px;
+}
+
+.btn span {
+  margin-left: 20px;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.footer-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: auto;
+  padding-top: 7px;
+
+  border-top: 1px solid var(--white-faint);
+
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+
+  opacity: .8;
+}
+
+
+/* =====================================================
+   BACK
+   ===================================================== */
+
+.back {
+  border: 0;
+  padding: 0;
+
+  background: transparent;
+  color: var(--paper);
+
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+.center-content {
+  width: min(400px, 100%);
+
+  margin: auto;
+}
+
+.center-content h2,
+.vote-header h2,
+.confirm-box h3 {
+  margin: 0;
+
+  font-size: clamp(52px, 7vw, 100px);
+  line-height: .74;
+
+  font-weight: 1200;
+
+  letter-spacing: -.03em;
+
+  text-transform: uppercase;
+}
+
+.muted {
+  margin-top: 14px;
+
+  color: var(--white-soft);
+
+  font-size: 16px;
+  line-height: 1.35;
+
+  letter-spacing: .07em;
+
+  text-transform: uppercase;
+}
+
+.login-form {
+  margin-top: 30px;
+}
+
+.login-form label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 15px;
+
+  letter-spacing: .15em;
+}
+
+.input-row {
+  display: flex;
+  gap: 5px;
+}
+
+.input-row input {
+  flex: 1;
+  min-width: 0;
+
+  border: 0;
+  border-bottom: 1px solid var(--paper);
+
+  outline: none;
+
+  background: transparent;
+  color: var(--paper);
+
+  padding: 6px 2px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 15px;
+
+  letter-spacing: .06em;
+
+  text-transform: uppercase;
+}
+
+.input-row input::placeholder {
+  color: rgba(247, 233, 234, .35);
+}
+
+.square-btn {
+  width: 35px;
+  height: 35px;
+
+  border: 0;
+
+  background: var(--paper);
+  color: var(--ink);
+
+  font-family: "DM Mono", monospace;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.status {
+  min-height: 13px;
+
+  margin: 6px 0 0;
+
+  color: #ffd4dc;
+
+  font-family: "DM Mono", monospace;
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   VOTING HEADER
+   ===================================================== */
+
+.vote-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-top: 51px;
+  margin-bottom: 17px;
+}
+
+.vote-header h2 {
+  font-size: clamp(90px, 6vw, 200px);
+}
+
+.progress {
+  flex-shrink: 0;
+
+  border: 1px solid var(--white-faint);
+
+  padding: 6px 8px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 20px;
+}
+
+
+/* =====================================================
+   CANDIDATE LIST
+   ===================================================== */
+
+.candidate-list {
+  width: 100%;
+  max-width: 800px;
+
+  margin-left: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  overflow: visible;
+}
+
+
+/* =====================================================
+   CANDIDATE
+   ===================================================== */
+
+.candidate {
+  position: relative;
+
+  width: 100%;
+  height: 78px;
+  min-height: 78px;
+
+  border: 1px solid transparent;
+
+  background: var(--paper);
+  color: var(--ink);
+
+  cursor: pointer;
+
+  overflow: visible;
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+
+  z-index: 1;
+}
+
+.candidate:hover {
+  transform: translateX(-4px);
+  z-index: 10;
+}
+
+.candidate.selected {
+  border-color: var(--pink);
+
+  box-shadow:
+    0 0 0 1px var(--pink),
+    0 0 20px rgba(255, 23, 79, .12);
+
+  z-index: 20;
+}
+
+
+/* =====================================================
+   NUMBER
+   ===================================================== */
+
+.candidate .num {
+  position: absolute;
+
+  left: 9px;
+  top: 0px;
+  bottom: 10px;
+
+  font-size: 75px;
+  line-height: .88;
+
+  font-weight: 500;
+
+  letter-spacing: -.05em;
+
+  z-index: 4;
+}
+
+
+/* =====================================================
+   FOTO KANDIDAT
+   Tidak mengubah layout card lainnya
+   ===================================================== */
+
+.candidate .avatar {
+  position: absolute;
+
+  /*
+    Foto sedikit keluar dari bagian atas card
+  */
+  top: -102px;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 0;
+
+  display: block;
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+
+  /*
+    Angka 01/02/03 dari JS disembunyikan
+  */
+  color: transparent;
+  font-size: 0;
+
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   POSISI FOTO
+   01 = KANAN
+   02 = LEBIH KIRI
+   03 = KANAN
+   ===================================================== */
+
+.candidate:nth-child(1) .avatar {
+  right: 45px;
+}
+
+.candidate:nth-child(2) .avatar {
+  right: 200px;
+}
+
+.candidate:nth-child(3) .avatar {
+  right: 60px;
+}
+
+
+/* =====================================================
+   9 FOTO
+   ===================================================== */
+
+/* OSIS */
+#osisCandidates .candidate:nth-child(1) .avatar {
+  background-image: url("foto-osis-1.png");
+}
+
+#osisCandidates .candidate:nth-child(2) .avatar {
+  background-image: url("foto-osis-2.png");
+}
+
+#osisCandidates .candidate:nth-child(3) .avatar {
+  background-image: url("foto-osis-3.png");
+}
+
+
+/* PRADANA PUTRA */
+#putraCandidates .candidate:nth-child(1) .avatar {
+  background-image: url("foto-putra-1.png");
+}
+
+#putraCandidates .candidate:nth-child(2) .avatar {
+  background-image: url("foto-putra-2.png");
+}
+
+#putraCandidates .candidate:nth-child(3) .avatar {
+  background-image: url("foto-putra-3.png");
+}
+
+
+/* PRADANA PUTRI */
+#putriCandidates .candidate:nth-child(1) .avatar {
+  background-image: url("foto-putri-1.png");
+}
+
+#putriCandidates .candidate:nth-child(2) .avatar {
+  background-image: url("foto-putri-2.png");
+}
+
+#putriCandidates .candidate:nth-child(3) .avatar {
+  background-image: url("foto-putri-3.png");
+}
+
+.candidate:nth-child(1) {
+  z-index: 1;
+}
+
+.candidate:nth-child(2) {
+  z-index: 2;
+}
+
+.candidate:nth-child(3) {
+  z-index: 3;
+}
+
+.candidate .avatar {
+  z-index: 10;
+}
+
+/* Hapus bentuk kepala/avatar bawaan lama */
+.candidate .avatar::after {
+  display: none;
+}
+
+/* =====================================================
+   INFO
+   ===================================================== */
+
+.candidate .info {
+  position: absolute;
+
+  left: 80px;
+  right: 150px;
+  top: 20px;
+
+  padding: 0;
+
+  border: 0;
+
+  z-index: 5;
+}
+
+.candidate .name {
+  font-size: 30px;
+  line-height: .9;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+}
+
+.candidate .role {
+  margin-top: 5px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+
+  letter-spacing: .1em;
+
+  opacity: .55;
+
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   CHECK
+   ===================================================== */
+
+.check {
+  position: absolute;
+
+  right: 18px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
+
+  border: 1px solid rgba(38, 0, 13, .4);
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 15px;
+
+  z-index: 8;
+}
+
+.selected .check {
+  border-color: var(--pink);
+  background: var(--pink);
+  color: #fff;
+}
+
+
+/* =====================================================
+   BOTTOM ACTION
+   ===================================================== */
+
+.screen-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: auto;
+  padding-top: 9px;
+
+  border-top: 1px solid var(--white-faint);
+}
+
+.hint {
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+
+  letter-spacing: .08em;
+
+  color: var(--white-soft);
+
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   TOAST
+   ===================================================== */
+
+.toast {
+  position: fixed;
+
+  left: 50%;
+  bottom: 20px;
+
+  transform: translate(-50%, 20px);
+
+  z-index: 200;
+
+  padding: 8px 12px;
+
+  background: var(--paper);
+  color: var(--ink);
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: .25s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+
+/* =====================================================
+   THANK YOU
+   ===================================================== */
+
+.thank-content {
+  text-align: left;
+}
+
+.thank-mark {
+  width: 36px;
+  height: 36px;
+
+  margin-top: 20px;
+
+  border: 1px solid var(--white-faint);
+
+  display: grid;
+  place-items: center;
+
+  font-size: 18px;
+}
+
+
+/* =====================================================
+   CONFIRMATION
+   ===================================================== */
+
+.confirm-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 150;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+
+  background: rgba(15, 0, 6, .68);
+
+  backdrop-filter: blur(7px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+.confirm-modal.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.confirm-box {
+  position: relative;
+
+  width: min(390px, 100%);
+
+  padding: 17px;
+
+  background: var(--paper);
+  color: var(--ink);
+
+  border: 1px solid rgba(38, 0, 13, .25);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, .4);
+
+  transform: translateY(15px) scale(.98);
+
+  transition:
+    transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+
+.confirm-modal.show .confirm-box {
+  transform: translateY(0) scale(1);
+}
+
+.confirm-top {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+
+  letter-spacing: .14em;
+
+  opacity: .7;
+}
+
+.confirm-line {
+  width: 100%;
+  height: 1px;
+
+  margin: 11px 0 20px;
+
+  background: rgba(38, 0, 13, .35);
+}
+
+.confirm-box .eyebrow {
+  color: var(--maroon);
+}
+
+.confirm-box h3 {
+  font-size: 62px;
+
+  margin-top: 6px;
+}
+
+.confirm-box > p:not(.eyebrow) {
+  max-width: 300px;
+
+  margin: 18px 0 22px;
+
+  font-size: 10px;
+  line-height: 1.35;
+
+  letter-spacing: .03em;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 5px;
+
+  padding-top: 9px;
+
+  border-top: 1px solid rgba(38, 0, 13, .25);
+}
+
+.confirm-cancel,
+.confirm-submit {
+  height: 29px;
+
+  border: 0;
+
+  padding: 0 11px;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: .1em;
+
+  cursor: pointer;
+}
+
+.confirm-cancel {
+  background: transparent;
+  color: var(--ink);
+
+  border: 1px solid rgba(38, 0, 13, .35);
+}
+
+.confirm-submit {
+  margin-left: auto;
+
+  background: var(--maroon);
+  color: var(--paper);
+}
+
+.confirm-submit:hover {
+  background: var(--maroon-light);
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .screen {
+    padding:
+      18px
+      20px
+      16px;
+  }
+
+  .topline::after {
+    left: 20px;
+    right: 20px;
+    top: 39px;
+  }
+
+  .hero-copy {
+    margin-bottom: 18px;
+  }
+
+  .hero-copy h1 {
+    font-size: 72px;
+  }
+
+  .school {
+    font-size: 12px;
+  }
+
+  .subcopy {
+    font-size: 8px;
+  }
+
+  .vote-header {
+    margin-top: 46px;
+    margin-bottom: 14px;
+  }
+
+  .vote-header h2 {
+    font-size: 45px;
+  }
+
+
+  /* ===================================================
+     MOBILE CANDIDATE
+     =================================================== */
+
+  .candidate-list {
+    gap: 6px;
+  }
+
+  .candidate {
+    height: 67px;
+    min-height: 67px;
+  }
+
+  .candidate .num {
+    left: 7px;
+    font-size: 58px;
+  }
+
+  .candidate .info {
+    left: 78px;
+    right: 135px;
+    top: 10px;
+  }
+
+  .candidate .name {
+    font-size: 16px;
+  }
+
+  .candidate .role {
+    font-size: 6px;
+  }
+
+  .candidate .avatar {
+    width: 115px;
+    height: 108px;
+    top: -20px;
+  }
+
+
+  /* ===================================================
+     MOBILE — OSIS
+     =================================================== */
+
+  #osisCandidates .candidate:nth-child(1) .avatar {
+    right: 35px;
+  }
+
+  #osisCandidates .candidate:nth-child(2) .avatar {
+    right: 180px;
+  }
+
+  #osisCandidates .candidate:nth-child(3) .avatar {
+    right: 70px;
+  }
+
+
+  /* ===================================================
+     MOBILE — PUTRA
+     =================================================== */
+
+  #putraCandidates .candidate:nth-child(1) .avatar {
+    right: 35px;
+  }
+
+  #putraCandidates .candidate:nth-child(2) .avatar {
+    right: 180px;
+  }
+
+  #putraCandidates .candidate:nth-child(3) .avatar {
+    right: 70px;
+  }
+
+
+  /* ===================================================
+     MOBILE — PUTRI
+     =================================================== */
+
+  #putriCandidates .candidate:nth-child(1) .avatar {
+    right: 35px;
+  }
+
+  #putriCandidates .candidate:nth-child(2) .avatar {
+    right: 180px;
+  }
+
+  #putriCandidates .candidate:nth-child(3) .avatar {
+    right: 70px;
+  }
+
+
+  .candidate .check {
+    right: 10px;
+
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer-line {
+    font-size: 6px;
+  }
+
+  .confirm-box {
+    padding: 15px;
+  }
+
+  .confirm-box h3 {
+    font-size: 56px;
+  }
+}
+.footer-line a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================
+   LOGO — VISUAL ONLY
+   ========================================= */
+
+.site-logo {
+  position: fixed;
+
+  top: -40px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 125px;
+  height: 125px;
+
+  object-fit: contain;
+
+  /* CUMA VISUAL */
+  pointer-events: none;
+
+  z-index: 50;
+}
+
+.foto-pojok {
+  position: fixed;
+  width: 360px;
+  height: auto;
+  bottom: 130px;
+  left: 82px;
+}
